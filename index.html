@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html  manifest="app.manifest">
+<head>
+    <style src="css/bootstrap.min.css"></style>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>TUNEMAKERS</title>
+<style>
+    @font-face 
+    {
+  font-family: MengNa;
+  src: url(./MengNa.otf);
+    }
+    html
+    {
+        height:100%;
+        font-family: MengNa;
+    }
+    body
+    {
+        height:100%;
+        margin: 0;
+        padding: 0;
+    }
+    #container
+    {
+        min-height: 100%;
+        position: relative;
+    }
+    .header
+    {
+        padding: 10px;
+        height: 72px;
+        text-align: center;
+    }
+    .main
+    {
+        padding:10px;
+        padding-bottom: 100px;
+        text-align: center;
+    }
+    .footer
+    {
+        position:absolute;
+        text-align: center;
+        bottom:30px;
+        width:100%;
+        height: 100px;
+    }
+    .button
+    {
+        width:180px;
+        height: 100px;
+        margin:7px;
+        position: relative;
+        font-family: MengNa;
+        font-size: 16px;
+        font-weight: 800;
+        border: 1px solid #A80032;
+        background-color: white;
+        color: #A80032;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+    .buttonAnswer
+    {
+        width:180px;
+        height: 120px;
+        margin:5px;
+        position: relative;
+        font-family: MengNa;
+        font-size: 17px;
+        font-weight: 500;
+        border: 1px solid #A80032;
+        background-color: white;
+        color:#A80032;
+        white-space: normal;
+        vertical-align: text-top;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+    .buttonNo
+    {
+        position: absolute;
+        top:-10px;
+        left:-10px;
+        width:50px;
+        height:30px;
+        border:1px solid #A80032;
+        border-radius: 20px;
+        background-color: white;
+        font-family: MengNa;
+        font-size: medium;
+        font-weight: 900;
+        color: #A80032;
+    }
+    .buttonClicked
+    {
+        color:white;
+        background-color: #A80032;
+    }
+
+    .categoryTitle
+    {
+        font-family: MengNa;
+        font-size: 1.9em;
+        font-weight: 900;
+    }
+    .categorySubTitle
+    {
+        font-family: MengNa;
+        font-size: 1.5em;
+        font-weight: 800;
+        line-height: 20px;
+    }
+    .questionTitle
+    {
+        font-family: MengNa;
+        font-size: 1.9em;
+        font-weight: 900;
+    }
+    .questionTitleMarked
+    {
+        font-family: MengNa;
+        font-size: 1em;
+        font-weight: 900;
+        color: #A80032;
+    }
+    .questionSubTitle
+    {
+        font-family: MengNa;
+        font-size: 1.5em;
+        font-weight: 800;
+        line-height: 20px;
+    }
+
+    .btnAction
+    {
+        width:180px;
+        height: 80px;
+        margin:10px;
+        position: relative;
+        font-family: MengNa;
+        font-size: large;
+        font-weight: 500;
+        border: 1px solid #A80032;
+        color:white;
+        background-color: #A80032;
+    }
+    .hideItem
+    {
+        visibility:hidden;
+        position:absolute;
+    }
+    .template
+    {
+        visibility:hidden;
+        position:absolute;
+    }
+    .product
+    {
+      
+        align-content: center;
+    }
+    .product td
+    {
+        padding:0px;
+    }
+    .recomendImg
+    {
+        width:300px;
+    }
+    .recNo
+    {
+        position: absolute;
+        top:8px;
+        left:0px;
+        width:20px;
+        height:20px;
+        border:1px solid #A80032;
+        border-radius: 20px;
+        background-color: #A80032;
+        font-family: MengNa;
+        font-size: 18px;
+        font-weight: 900;
+        color: white;
+        vertical-align:middle;
+        line-height: 21px;
+    }
+    .detailNo
+    {
+        position: absolute;
+        top:14px;
+        left:0px;
+        width:30px;
+        height:30px;
+        border:1px solid #A80032;
+        border-radius: 25px;
+        background-color: #A80032;
+        font-family: MengNa;
+        font-size: 26px;
+        font-weight: 900;
+        color: white;
+        vertical-align:middle;
+        line-height: 25px;
+    }
+    .recName
+    {
+        font-family: MengNa;
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 35px;
+    }
+    .recTitle2
+    {
+        font-family: MengNa;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #A80032;
+    }
+    .recText
+    {
+        font-family: MengNa;
+        font-size:0.9rem;
+        line-height: 23px;
+        margin-top:0;
+    }
+    .recButton
+    {
+        display: block;
+        width: 120px;
+        padding: 10px 20px 10px 20px;
+        margin: 0 auto;
+        font-size: 1rem;
+        font-family: MengNa;
+        text-align: center;
+        text-decoration: none;
+        background-color: #efece7;
+        color: #333;
+        transition: opacity 0.5s;
+        border-width: 0;
+    }
+    table
+    {
+        border-collapse: collapse;
+        border-width:5px;
+        width:800px;
+    }
+    td
+    {
+        width:250px;
+        padding-left:10px;
+        padding-right: 10px;
+        margin:0px;
+        text-align: center;
+        vertical-align: top;
+    }
+    .tdTitle2
+    {
+        text-align: left;
+        line-height: 20px;
+    }
+    .tdDescription
+    {
+        text-align: left;
+        padding-top:10px;
+    }
+    .detailVolume
+    {
+        font-size:1.3rem;
+        padding-left: 70px;
+    }
+    .detailPrice
+    {
+        font-size:1.7rem;
+    }
+    .intro
+    {
+        background-image: url("pic/intro_bg.png");
+        height: 100vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+</head>
+ 
+<body>
+    <div id="container">
+        <div class="header">
+            <img src="./pic/logo_dark.png" width="300">
+        </div>
+        <div id="main" class="main">
+            <div id="categorySelect" style="padding-bottom: 0; ">
+                <span class="categoryTitle">請選出目前在意的肌膚困擾</span><br/>
+                <span class="categorySubTitle">請依照在意的優先順序 選擇3個</span>
+                <div id="catLine1" style="margin-top:20px;">
+                    <button data-src="c01" class="button btnCategory">乾燥<br/>敏感肌膚<div class="buttonNo hideItem"></div></button>
+                    <button data-src="c02" class="button btnCategory">暗沉<br/>黑斑、色素沉澱<div class="buttonNo hideItem"></div></button>
+                    <button data-src="c03" class="button btnCategory">抗老修護<br/>皺紋、鬆弛<div class="buttonNo hideItem"></div></button>
+                    <button data-src="c04" class="button btnCategory">毛孔<br/>毛孔粗大、泛油光<div class="buttonNo hideItem"></div></button>
+                    <button data-src="c05" class="button btnCategory">肌膚粗糙<br/>粉刺、肌膚乾燥<div class="buttonNo hideItem"></div></button>
+                </div>
+                <div id="catLine2" style="margin-top:20px;">
+                    <img src="pic/banner.png" style="height:250px;">
+                </div>
+            </div>
+            <div id="QuestionTemplate" data-stage="0" id="question" class="template">
+                <span class="questionTitle"></span><br/>
+                <span class="questionSubTitle">請依照在意的優先順序 從以下項目中選擇1-3個</span>
+                <div class="line1" style="margin-top:50px;">
+                    <button data-src="temp" data-product="" class="buttonAnswer template"><span class="btnText"></span><div class="buttonNo hideItem"></div></button>
+                </div>
+                <div class="line2" style="margin-top:50px;">
+                    <button data-src="temp" data-product="" class="buttonAnswer template"><span class="btnText"></span><div class="buttonNo hideItem"></div></button>
+                </div>
+            </div>
+            <div id="result" style="padding-bottom: 0;">
+                <span class="questionTitle">推薦的原液</span>
+                <table id="table1" style="width:45%; border-width:5px; margin:0 auto;">
+                    <tbody>
+                        <tr>
+                            <td><img id="recomendImg1" class="recomendImg recomendImg1" src=""></td>
+                        </tr>
+                        <tr>
+                            <td><div style="text-align: center;"><button id="recButton1" class="recButton recButton1">詳細資料</button></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="table2" style="width:75%; border-width:5px; margin:0 auto;">
+                    <tbody>
+                        <tr>
+                            <td><img  class="recomendImg recomendImg1" src=""></td>
+                            <td><img  class="recomendImg recomendImg2" src=""></td>
+                        </tr>
+                        <tr>
+                            <td><div style="text-align: center;"><button class="recButton recButton1">詳細資料</button></div></td>
+                            <td><div style="text-align: center;"><button class="recButton recButton2">詳細資料</button></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="table3" style="width:99%; border-width:5px; margin:0 auto;">
+                    <tbody>
+                        <tr>
+                            <td><img  class="recomendImg recomendImg1" src=""></td>
+                            <td><img  class="recomendImg recomendImg2" src=""></td>
+                            <td><img  class="recomendImg recomendImg3" src=""></td>
+                        </tr>
+                        <tr>
+                            <td><div style="text-align: center;"><button  class="recButton recButton1">詳細資料</button></div></td>
+                            <td><div style="text-align: center;"><button  class="recButton recButton2">詳細資料</button></div></td>
+                            <td><div style="text-align: center;"><button  class="recButton recButton3">詳細資料</button></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="detail" style="padding-bottom: 0;">
+                <button id="detailClose" class="recButton" style="position: absolute; right: 30px; top:80px;">X</button>
+                <table style="width:95%; margin:0 auto;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img id="detailImg" style="width:780px; ">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <button id="previous" class="btnAction">上一步</button>
+            <button id="next" class="btnAction">下一步</button>
+            <button id="reset" class="btnAction">重新測驗</button>
+        </div>
+    </div>
+    <div id="intro" class="intro" style="background-color: #A80032; position:absolute; height: 100vh; width: 100vw; z-index: 100; top:0; text-align: center;">
+        
+    </div>
+<script src="data/data.js"></script>
+<script>
+    
+    var selCats=[];
+    var stage =0;
+    var catDiv ={};
+    var selQ1 ={};
+    var selQ2 ={};
+    var selQ3 ={};
+    var resultArea ={};
+    var resultPruduct =[];
+    $(document).ready(function(){
+        $(".btnCategory").click(function(){
+            let catNo = $(this).attr("data-src");
+            if( $(this).hasClass("buttonClicked")){
+                let index = selCats.indexOf(catNo);
+                selCats.splice(index,1);
+                $(this).removeClass("buttonClicked");
+            }
+            else{
+                if(selCats.length<3){
+                    selCats.push(catNo);
+                    $(this).addClass("buttonClicked");
+                }
+            }
+            RefreshCatSelNo();
+        });
+        $("#next").click(function(){
+            NextStage();
+        });
+        $("#previous").click(function(){
+            PreviousStage();
+        });
+
+        selQ1 = new QuestionArea($("#QuestionTemplate"));
+        selQ2 = new QuestionArea($("#QuestionTemplate"));
+        selQ3 = new QuestionArea($("#QuestionTemplate"));
+        selQ1.hide();
+        selQ2.hide();
+        selQ3.hide();
+        catDiv = $("#categorySelect");
+        $("#reset").hide();
+        $("#reset").click(function(){
+            location.reload();
+        });
+
+        resultArea = new ResultArea($("#result"));
+        $("#result").hide();
+        $("#detail").hide();
+        $("#previous").hide();
+
+        $("#intro").click(function(){
+            $("#intro").hide();
+        });
+    });
+
+    function RefreshCatSelNo(){
+        $("#catLine1 .buttonNo").each(function(){
+            $(this).removeClass("hideItem");
+            
+            let catNo =$(this).parent().attr("data-src");
+            let index = selCats.indexOf(catNo);
+            if(index != -1){
+                $(this).html(index+1);
+                $(this).removeClass("hideItem");
+            }
+            else{
+                $(this).addClass("hideItem");
+            }
+        });
+    }
+
+    function QuestionArea(elem){
+        var me = this;
+        me.element = $(elem).clone();
+        me.element.removeClass("template");
+        $("#main").append(me.element);
+        me.element.title = me.element.find(".questionTitle");
+        me.element.line1 = me.element.find(".line1");
+        me.element.line2 = me.element.find(".line2");
+
+        me.selContent=[];
+        me.selProduct=[];
+        me.data ={};
+        me.setData = function(qData){
+            me.data = qData;
+            me.refresh();
+        };
+        me.refresh = function(){
+            var refreshNo = function(){
+                me.element.line1.find(".buttonNo").each(function(){
+                    $(this).removeClass("hideItem");
+            
+                    let ansNo =$(this).parent().attr("data-src");
+                    let index = me.selContent.indexOf(ansNo);
+                    if(index != -1){
+                        $(this).html(index+1);
+                        $(this).removeClass("hideItem");
+                    }
+                    else{
+                        $(this).addClass("hideItem");
+                    }
+                });
+                me.element.line2.find(".buttonNo").each(function(){
+                    $(this).removeClass("hideItem");
+            
+                    let ansNo =$(this).parent().attr("data-src");
+                    let index = me.selContent.indexOf(ansNo);
+                    if(index != -1){
+                        $(this).html(index+1);
+                        $(this).removeClass("hideItem");
+                    }
+                    else{
+                        $(this).addClass("hideItem");
+                    }
+                });
+            }
+            var addLine1Button =function(item){
+                var $button = me.element.line1.find("button.template").clone();
+                $button.removeClass("template");
+                $button.attr("data-src",item.AnswerNo);
+                $button.attr("data-product",item.ProductNo);
+                $button.find(".btnText").html(item.Text);
+                $button.click(function(){
+                    let ansNo = $(this).attr("data-src");
+                    if( $(this).hasClass("buttonClicked")){
+                        let index = me.selContent.indexOf(ansNo);
+                        me.selContent.splice(index,1);
+                        me.selProduct.splice(index,1);
+                        $(this).removeClass("buttonClicked");
+                    }
+                    else{
+                        if(me.selContent.length<3){
+                            me.selContent.push(ansNo);
+                            me.selProduct.push(item.ProductNo);
+                            $(this).addClass("buttonClicked");
+                        }
+                    }
+                    ToggleNextBtn();
+                    refreshNo();
+                });
+                me.element.line1.append($button);
+            };
+            var addLine2Button =function(item){
+                var $button = me.element.line2.find("button.template").clone();
+                $button.removeClass("template");
+                $button.attr("data-src",item.AnswerNo);
+                $button.attr("data-product",item.ProductNo);
+                $button.find(".btnText").html(item.Text);
+                $button.click(function(){
+                    let ansNo = $(this).attr("data-src");
+                    if( $(this).hasClass("buttonClicked")){
+                        let index = me.selContent.indexOf(ansNo);
+                        me.selContent.splice(index,1);
+                        me.selProduct.splice(index,1);
+                        $(this).removeClass("buttonClicked");
+                    }
+                    else{
+                        if(me.selContent.length<3){
+                            me.selContent.push(ansNo);
+                            me.selProduct.push(item.ProductNo);
+                            $(this).addClass("buttonClicked");
+                        }
+                    }
+                    ToggleNextBtn();
+                    refreshNo();
+                });
+                me.element.line2.append($button);
+            };
+            me.selContent=[];
+            me.selProduct=[];
+            me.element.title.html(me.data.Title);
+
+            me.element.line1.find("button:not(.template)").remove();
+            me.element.line2.find("button:not(.template)").remove();
+                for (i = 0; i < me.data.Answers.Line1.length; ++i) {
+                    addLine1Button(me.data.Answers.Line1[i]);
+                }
+                for (i = 0; i < me.data.Answers.Line2.length; ++i) {
+                    addLine2Button(me.data.Answers.Line2[i]);
+                }
+        };
+        me.clear = function(){
+            me.element.detach();
+        };
+        me.show =function(){
+            me.element.show();
+        };
+        me.hide =function(){
+            me.element.hide();
+        }
+        
+    }
+
+    function ResultArea(elem){
+        var me = this;
+        me.element = elem;
+        me.setData = function(resultData){
+            me.data = resultData;
+            me.refresh();
+        };
+        me.refresh = function(){
+            let ent =me.data[0];
+            resultPruduct=[];
+            resultPruduct.push(ent.ProductNo);
+            $(".recomendImg1").attr("src",ent.PicResult)
+            $(".recNo1").text(ent.No);
+            if(ent.No.length==0){
+                $(".recNo1").hide();
+            }
+            else{
+                $(".recNo1").show();
+            }
+            $(".recName1").text(ent.Name);
+            $(".recTitle21").html(ent.Title2);
+            $(".recText1").text(ent.Text);
+            $(".recButton1").click(function(){
+                LoadDetailData(resultPruduct[0]);
+                $("#detail").show();
+                $("#result").hide();
+                $("#previous").hide();
+            });
+            if(me.data.length>1){
+                ent = me.data[1];
+            resultPruduct.push(ent.ProductNo);
+            $(".recomendImg2").attr("src",ent.PicResult)
+            $(".recNo2").text(ent.No);
+            if(ent.No.length==0){
+                $(".recNo2").hide();
+            }
+            else{
+                $(".recNo2").show();
+            }
+            $(".recName2").text(ent.Name);
+            $(".recTitle22").html(ent.Title2);
+            $(".recText2").text(ent.Text);
+            $(".recButton2").click(function(){
+                LoadDetailData(resultPruduct[1]);
+                $("#detail").show();
+                $("#result").hide();
+                $("#previous").hide();
+            });
+            }
+            if(me.data.length>2){
+                ent = me.data[2];
+            resultPruduct.push(ent.ProductNo);
+            $(".recomendImg3").attr("src",ent.PicResult)
+            $(".recNo3").text(ent.No);
+            if(ent.No.length==0){
+                $("#recNo3").hide();
+            }
+            else{
+                $("#recNo3").show();
+            }
+            $(".recName3").text(ent.Name);
+            $(".recTitle23").html(ent.Title2);
+            $(".recText3").text(ent.Text);
+            $(".recButton3").click(function(){
+                LoadDetailData(resultPruduct[2]);
+                $("#detail").show();
+                $("#result").hide();
+                $("#previous").hide();
+            });
+            }
+            
+        };
+    }
+
+
+    function NextStage(){
+        if(stage==-1){
+
+        }
+
+        if(stage==0){
+            
+            if(selCats.length==3){
+                let inputData = FindQuestion(selCats[0]);
+                selQ1.setData(inputData);
+                selQ1.show();
+                catDiv.hide();
+                $("#previous").show();
+                stage =1;
+                ToggleNextBtn();
+            }
+        }
+        else if(stage==1){
+            
+            if(selCats.length>1 && selQ1.selContent.length>0){
+                let inputData = FindQuestion(selCats[1]);
+                selQ2.setData(inputData);
+                selQ2.show();
+                selQ1.hide();
+                stage = 2;
+                ToggleNextBtn();
+            }
+        }
+        else if(stage==2){
+            
+            if(selCats.length>2 && selQ2.selContent.length>0){
+                let inputData = FindQuestion(selCats[2]);
+                selQ3.setData(inputData);
+                selQ3.show();
+                selQ2.hide();
+                stage = 3;
+                ToggleNextBtn();
+            }
+        }
+        else if(stage==3){
+            if(selQ3.selContent.length>0){
+                //go to result page
+                stage=10;
+                selQ3.hide();
+                let products = GetProducts();
+                if(products.length==1){
+                    $("#table1").show();
+                    $("#table2").hide();
+                    $("#table3").hide();
+                }
+                else if(products.length==2){
+                    $("#table1").hide();
+                    $("#table2").show();
+                    $("#table3").hide();
+                }
+                else{
+                    $("#table1").hide();
+                    $("#table2").hide();
+                    $("#table3").show();
+                }
+                resultArea.setData(products);
+                $("#result").show();
+                $("#next").hide();
+                $("#reset").show();
+            }
+            
+        }
+    }
+
+    function LoadDetailData(productNo){
+        let product = FindProduct(productNo);
+        $("#detailImg").attr("src", product.PicDetail);
+        $("#detailNo").text(product.No);
+        if(product.No.length==0){
+            $("#detailNo").hide();
+        }
+        else{
+            $("#detailNo").show();
+        }
+        $("#detailTitle").text(product.Name);
+        $("#detailTitle2").html(product.Title2);
+        $("#detailText").text(product.Text);
+        $("#detailVolume").text(product.Volume);
+        $("#detailPrice").text(product.Price);
+        $("#detailClose").click(function(){
+            $("#detail").hide();
+            $("#result").show();
+            $("#previous").show();
+        });
+    }
+
+    function ToggleNextBtn(){
+        if(stage==1){
+            if(selQ1.selContent.length>0){
+                $("#next").prop('disabled', false);
+            }
+        }
+        else if(stage==2){
+            if(selQ2.selContent.length>0){
+                $("#next").prop('disabled', false);
+            }
+        }
+        else if(stage==3){
+            if(selQ3.selContent.length>0){
+                $("#next").prop('disabled', false);
+            }
+        }
+        else{
+            $("#next").prop('disabled', true);
+        }
+    }
+
+    function PreviousStage(){
+        if(stage==10){
+            $("#result").hide();
+            $("#next").show();
+            $("#reset").hide();
+            selQ3.show();
+            stage = 3;
+        }
+        else if(stage==3){
+            selQ3.hide();
+            selQ2.show();
+            stage =2;
+        }
+        else if(stage==2){
+            selQ2.hide();
+            selQ1.show();
+            stage =1;
+        }
+        else if(stage==1){
+            selQ1.hide();
+            catDiv.show();
+            $("#previous").hide()
+            stage =0;
+            location.reload();
+        }
+    }
+
+    function FindQuestion(qNo){
+        let output={};
+        data.Questions.forEach(element => {
+            if(element.QuestionNo == qNo){
+                output = element;
+            }
+        });
+        return output;
+    }
+
+    function FindProduct(pNo){
+        let output={};
+        data.Products.forEach(element => {
+            if(element.ProductNo == pNo){
+                output = element;
+            }
+        });
+        return output;
+    }
+
+    function GetProducts(){
+        var output=[];
+        var numbers=[];
+        var productNo = selQ1.selProduct[0];
+        output.push( FindProduct(productNo));
+        numbers.push(productNo);
+        productNo = selQ2.selProduct[0];
+        if(numbers.indexOf(productNo) == -1){
+            output.push( FindProduct(productNo));
+            numbers.push(productNo);
+        }
+
+        productNo = selQ3.selProduct[0];
+        if(numbers.indexOf(productNo) == -1){
+            output.push( FindProduct(productNo));
+        }
+        return output;
+    }
+
+</script>
+
+</body>
+ 
+</html>
