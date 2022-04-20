@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # This is a comment.
-# Cache manifest version 0.0.1
+# Cache manifest version 0.0.2
 # If you change the version number in this comment,
 # the cache manifest is no longer byte-for-byte
 # identical.
@@ -33,6 +33,7 @@ pic/detail_12.png
 pic/detail_13.png
 pic/detail_14.png
 pic/detail_15.png
+pic/detail_16.png
 pic/result_1.png
 pic/result_2.png
 pic/result_3.png
@@ -48,6 +49,7 @@ pic/result_12.png
 pic/result_13.png
 pic/result_14.png
 pic/result_15.png
+pic/result_16.png
 
 
 

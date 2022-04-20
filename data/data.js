@@ -33,7 +33,8 @@ data={
             "Line2":
             [
             {"AnswerNo":"04", "ProductNo":"O12", "Text":"肌膚整體暗沉<br/>且粗糙"},
-            {"AnswerNo":"05", "ProductNo":"O13", "Text":"肌膚整體暗沉<br/>且毛孔粗大"}
+            {"AnswerNo":"05", "ProductNo":"O13", "Text":"肌膚整體暗沉<br/>且毛孔粗大"},
+            {"AnswerNo":"06", "ProductNo":"O16", "Text":"暗沉、毛孔粗大<br/>且肌膚乾燥"}
             ]
         }
     
@@ -112,6 +113,7 @@ data={
         {"ProductNo":"O11", "No":"11", "Name":"EGF煥顏修護原液", "Title2":"幫助延緩肌膚老化,<br/>淡化肌膚乾燥細紋", "Price":"NT1,170元", "Volume":"10ml", "Pic":"pic/O11_hero.png", "PicResult":"pic/result_11.png", "PicDetail":"pic/detail_11.png", "Text":"EFG(Epidermal Growth Factor)能從肌底活化肌膚，幫助調理肌膚紋路及撫平乾燥細紋，防止肌膚老化。"},
         {"ProductNo":"O12", "No":"12", "Name":"菸鹼醯胺亮白原液", "Title2":"改善肌膚暗沉,<br/>強化肌膚保護力,亮白肌膚", "Price":"NT480元", "Volume":"10ml", "Pic":"pic/O12_hero.png", "PicResult":"pic/result_12.png", "PicDetail":"pic/detail_12.png", "Text":"菸鹼醯胺亮白成分，溫和好吸收，改善膚色不均，膚色散發亮白光采。"},
         {"ProductNo":"O13", "No":"13", "Name":"傳明酸淨白原液", "Title2":"從源頭高校淨白肌膚", "Price":"NT1,750元", "Volume":"10ml", "Pic":"pic/O13_hero.png", "PicResult":"pic/result_13.png", "PicDetail":"pic/detail_13.png", "Text":"高濃度明星級亮白成分傳明酸，從源頭明亮肌底，掃除瑕疵，深度淨白。"},
+        {"ProductNo":"O16", "No":"16", "Name":"薏仁萃取原液", "Title2":"幫助肌膚水嫩透亮", "Price":"NT480元", "Volume":"10ml", "Pic":"pic/O16_hero.png", "PicResult":"pic/result_16.png", "PicDetail":"pic/detail_16.png", "Text":"天然漢方植萃成分，薏仁精華，小分子易吸收，從肌底保濕、溫和透亮不刺激。"},
         {"ProductNo":"N01", "No":"", "Name":"AHA角質對策水", "Title2":"&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;", "Price":"NT580元", "Volume":"120ml", "Pic":"pic/N01_hero.png", "PicResult":"pic/result_14.png", "PicDetail":"pic/detail_14.png", "Text":"AHA果酸原液添加，促進代謝角質，細緻毛孔。"},
         {"ProductNo":"N02", "No":"", "Name":"甘草草本舒緩調理水", "Title2":"&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;", "Price":"NT780元", "Volume":"120ml", "Pic":"pic/N02_hero.png", "PicResult":"pic/result_15.png", "PicDetail":"pic/detail_15.png", "Text":"添加甘草根萃取原液，協助油水平衡，舒緩安撫，維持肌膚健康狀態。"},
     ]
